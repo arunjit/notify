@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package main;
+
+message Config {
+  // GCM API Key. Required.
+  required string api_key = 1;
+
+  // The GCM send URL. Defaults to https://gcm-http.googleapis.com/gcm/send
+  optional string gcm_url = 2 [default = "https://gcm-http.googleapis.com/gcm/send"];
+
+  // A topic URL that apps will be listening to. Defaults to /topics/global
+  optional string topic_url = 3 [default = "/topics/global"];
+
+  // Message format will be interpolated with the command and status in
+  // placeholders @cmd@ and @status@ respectively.
+  // Defaults to "Command (@cmd@) exited with status (@status@)"
+  optional string message_fmt = 4 [default = "Command (@cmd@) exited with status (@status@)"];
+
+  // Notify on failures only. Defaults to true.
+  optional bool failure_only = 5 [default = true];
+}
